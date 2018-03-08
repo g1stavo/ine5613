@@ -4,6 +4,4 @@
 
 <img src="https://www.serebii.net/pokearth/sprites/dp/476.png">
 
-# Why?
-
 I did a Database I class at my university and these are the exercises required. I basically learned about relational algebra, structured query language and projecting and modeling databases.
