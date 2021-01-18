@@ -1,16 +1,13 @@
-1. 
-
+-- 1. 
 CREATE DATABASE gustavo
 
-
-2.
-
+-- 2.
 CREATE TABLE Ambulatorios (
 	nroa int NOT NULL,
 	andar numeric(3),
 	capacidade smallint,
 	PRIMARY KEY(nroa)
-);
+)
 
 CREATE TABLE Medicos (
 	codm int,
@@ -22,7 +19,7 @@ CREATE TABLE Medicos (
 	nroa int,
 	PRIMARY KEY(codm),
 	FOREIGN KEY (nroa) REFERENCES Ambulatorios
-);
+)
 
 CREATE TABLE Pacientes (
 	codp int,
@@ -32,7 +29,7 @@ CREATE TABLE Pacientes (
 	CPF numeric(11) UNIQUE,
 	doenca varchar(40) NOT NULL,
 	PRIMARY KEY (codp)
-);
+)
 
 CREATE TABLE Funcionarios (
 	codf int,
@@ -43,7 +40,7 @@ CREATE TABLE Funcionarios (
 	salario numeric(10),
 	cargo varchar(20),
 	PRIMARY KEY (codf)
-);
+)
 
 CREATE TABLE Consultas (
 	codm int,
@@ -53,30 +50,22 @@ CREATE TABLE Consultas (
 	FOREIGN KEY (codm) REFERENCES Medicos,
 	FOREIGN KEY (codp) REFERENCES Pacientes,
 	PRIMARY KEY (data)
-);
+)
 
-
-3.
-
+-- 3.
 ALTER TABLE Funcionarios ADD COLUMN nroa int
 
 ALTER TABLE Funcionarios ADD FOREIGN KEY (nroa) REFERENCES Ambulatorios
 
-
-4.
-
+-- 4.
 CREATE UNIQUE INDEX CPF ON Medicos (CPF)
 
 CREATE INDEX nroa ON Medicos (nroa)
 
 CREATE INDEX doenca ON Pacientes (doenca)
 
-
-5.
-
+-- 5.
 DROP INDEX doenca ON Pacientes
 
-
-6. 
-
+-- 6.
 ALTER TABLE Funcionarios DROP COLUMN cargo, DROP COLUMN nroa

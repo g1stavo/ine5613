@@ -1,4 +1,4 @@
-1.
+-- 1.
 CREATE TABLE PacientesJovens (
 	codp int,
 	nome varchar(40) NOT NULL,
@@ -7,20 +7,20 @@ CREATE TABLE PacientesJovens (
 	CPF numeric(11) UNIQUE,
 	doenca varchar(40) NOT NULL,
 	PRIMARY KEY (codp)
-);
+)
 
-2.
+-- 2.
 CREATE TRIGGER NomesPacientesMaiusculo
 AFTER INSERT ON PacientesJovens
 UPDATE PacientesJovens
 SET nome = UCASE(NEW.nome)
 WHERE codp = NEW.codp;
 
-3.
+-- 3.
 CREATE OR REPLACE FUNCTION AtualizaIdadeMedicos (novaIdade INTEGER)
 RETURNS trigger as $
 BEGIN
-  UPDATE Medicos
-  SET idade = novaIdade
-END;
-$ LANGUAGE 'plpgsql';
+	UPDATE Medicos
+	SET idade = novaIdade
+END
+$ LANGUAGE 'plpgsql'
